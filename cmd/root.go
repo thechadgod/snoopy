@@ -10,15 +10,15 @@ var (
 	rootCmd = &cobra.Command{
 		Use:   "snoopy",
 		Short: "snoop around people on the internet",
-		Long:  `
+		Long: `
 Track other people on the internet and gather data on them.
 Automate opsec and osint with snoopy.
 `,
 	}
 )
 
-func Execute()  {
-		err := rootCmd.Execute()
+func Execute() {
+	err := rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
 	}

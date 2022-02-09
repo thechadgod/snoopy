@@ -40,7 +40,6 @@ type IpApiData struct {
 	RegionName  string `json:"regionName"`
 }
 
-
 func GetPublicIP() (IP, error) {
 
 	res, err := http.Get("http://wtfismyip.com/json")

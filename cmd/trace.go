@@ -17,7 +17,7 @@ public IP address.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 
-				ipAddress := cmd.Flag("ip").Value.String()
+		ipAddress := cmd.Flag("ip").Value.String()
 
 		if ipAddress == "" {
 
@@ -49,8 +49,6 @@ public IP address.
 		}
 
 	},
-
-
 }
 
 func init() {
