@@ -8,6 +8,7 @@
 [![Build Status](https://github.com/thechadgod/snoopy/workflows/Go/badge.svg?branch=main)](https://github.com/thechadgod/snoopy/actions?query=branch%3Amain)
 [![Release](https://img.shields.io/github/release/thechadgod/snoopy.svg)](https://github.com/thechadgod/snoopy/releases)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/thechadgod/snoopy)
+[![Go Report Card](https://goreportcard.com/badge/github.com/thechadgod/snoopy)](https://goreportcard.com/report/github.com/thechadgod/snoopy)
 ![GitHub](https://img.shields.io/github/license/thechadgod/snoopy)
 ![GitHub issues](https://img.shields.io/github/issues/thechadgod/snoopy)
 
