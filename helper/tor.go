@@ -103,3 +103,87 @@ func StatusTor() {
 		fmt.Println("Tor is not running")
 	}
 }
+
+func ChangeID() {
+
+	hasStarted, err := isStarted()
+
+	if err != nil {
+		panic(err)
+	}
+
+	if hasStarted {
+
+		cmd := exec.Command("sudo", "torctl", "chngid")
+
+		stdout, err := cmd.Output()
+
+		if err != nil {
+
+			fmt.Println("An error occured:")
+			fmt.Println(string(stdout))
+			return
+
+		}
+
+		if strings.Contains(string(stdout), "tor identity changed") {
+
+			fmt.Println("Changed your tor identity")
+			return
+
+		} else {
+
+			fmt.Println(string(stdout))
+			return
+
+		}
+
+	} else {
+
+		fmt.Println("Tor is not running")
+
+	}
+
+}
+
+func ChangeMac() {
+
+	hasStarted, err := isStarted()
+
+	if err != nil {
+		panic(err)
+	}
+
+	if hasStarted {
+
+		cmd := exec.Command("sudo", "torctl", "chngmac")
+
+		stdout, err := cmd.Output()
+
+		if err != nil {
+
+			fmt.Println("An error occured:")
+			fmt.Println(string(stdout))
+			return
+
+		}
+
+		if strings.Contains(string(stdout), "changed mac addresses") {
+
+			fmt.Println("Changed your mac addresses")
+			return
+
+		} else {
+
+			fmt.Println(string(stdout))
+			return
+
+		}
+
+	} else {
+
+		fmt.Println("Tor is not running")
+
+	}
+
+}

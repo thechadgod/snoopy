@@ -57,10 +57,51 @@ Check Tor status.
 	},
 }
 
+var changeCmd = &cobra.Command{
+	Use:   "change",
+	Short: "Change address or identity.",
+	Long: `
+Change your mac address or tor identity.
+	`,
+}
+
+var changeIdCmd = &cobra.Command{
+	Use:   "id",
+	Short: "Change Tor identity",
+	Long: `
+Changes your tor identity.	
+`,
+	Run: func(cmd *cobra.Command, args []string) {
+
+		// change tor id
+		helper.ChangeID()
+
+	},
+}
+
+var changeMacCmd = &cobra.Command{
+	Use:   "mac",
+	Short: "Change mac address",
+	Long: `
+Change your mac address.	
+	`,
+	Run: func(cmd *cobra.Command, args []string) {
+
+		// change mac address
+		helper.ChangeMac()
+
+	},
+}
+
 func init() {
+
+	changeCmd.AddCommand(changeIdCmd)
+	changeCmd.AddCommand(changeMacCmd)
+
 	torCmd.AddCommand(startCmd)
 	torCmd.AddCommand(stopCmd)
 	torCmd.AddCommand(statusCmd)
+	torCmd.AddCommand(changeCmd)
 
 	rootCmd.AddCommand(torCmd)
 }
