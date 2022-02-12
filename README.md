@@ -20,6 +20,28 @@
 
 ---
 
+```
+Track other people on the internet and gather data on them.
+Automate opsec and osint with snoopy.
+
+Usage:
+  snoopy [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  search      Search your targets
+  tor         Hide your IP
+  trace       Trace your IP
+
+Flags:
+  -h, --help   help for snoopy
+
+Use "snoopy [command] --help" for more information about a command.
+```
+
+---
+
 <table>
 
   <td>
