@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/thechadgod/snoopy/helper"
+	"github.com/thechadgod/snoopy/internal/helper"
 )
 
 var torCmd = &cobra.Command{
