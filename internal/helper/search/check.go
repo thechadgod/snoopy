@@ -75,13 +75,45 @@ func checkBodyText(username string, site Site) (bool, string) {
 
 	if contains {
 		return false, ""
-
 	} else {
 		return true, usernameurl
-
 	}
 }
 
 func checkRedirect(username string, site Site) (bool, string) {
-	return false, ""
+
+	usernameurl := fmt.Sprintf(site.URL, username)
+
+	req, _ := http.NewRequest("GET", usernameurl, nil)
+	req.Header.Set("User-Agent", userAgent)
+
+	client := http.Client{}
+	res, err := client.Do(req)
+
+	if err != nil {
+		return false, ""
+	}
+
+	// defer res.Body.Close()
+
+	var errorURL string
+
+	if strings.Contains(site.RedirectLink, "%s") {
+		errorURL = fmt.Sprintf(site.RedirectLink, username)
+	} else {
+		errorURL = site.RedirectLink
+	}
+
+	contains := strings.Contains(res.Header.Get("Locations"), errorURL)
+
+	if contains {
+
+		return true, usernameurl
+
+	} else {
+
+		return false, ""
+
+	}
+
 }
