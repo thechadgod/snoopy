@@ -2,7 +2,9 @@ package search
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 type Checker func(string, Site) (bool, string)
@@ -39,8 +41,6 @@ func checkStatus(username string, site Site) (bool, string) {
 
 	defer res.Body.Close()
 
-	// fmt.Println(res.StatusCode)
-
 	if condition := res.StatusCode == 200; condition {
 		usernameurl := fmt.Sprintf(site.URL, username)
 		return true, usernameurl
@@ -50,7 +50,36 @@ func checkStatus(username string, site Site) (bool, string) {
 }
 
 func checkBodyText(username string, site Site) (bool, string) {
-	return false, ""
+
+	usernameurl := fmt.Sprintf(site.URL, username)
+
+	req, _ := http.NewRequest("GET", usernameurl, nil)
+	req.Header.Set("User-Agent", userAgent)
+
+	client := http.Client{}
+	res, err := client.Do(req)
+
+	if err != nil {
+		return false, ""
+	}
+
+	defer res.Body.Close()
+
+	body, err := ioutil.ReadAll(res.Body)
+
+	if err != nil {
+		return false, ""
+	}
+
+	contains := strings.Contains(string(body), site.BodyText)
+
+	if contains {
+		return false, ""
+
+	} else {
+		return true, usernameurl
+
+	}
 }
 
 func checkRedirect(username string, site Site) (bool, string) {
