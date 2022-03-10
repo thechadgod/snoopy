@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "Building..."
+go build .
+
+echo "Running tests..."
+go test -v ./...
