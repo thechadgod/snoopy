@@ -20,6 +20,14 @@
 
 ---
 
+## Installation
+
+```
+go install github.com/thechadgod/snoopy@latest
+```
+
+---
+
 ```
 Track other people on the internet and gather data on them.
 Automate opsec and osint with snoopy.
